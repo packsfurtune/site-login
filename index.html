@@ -1,48 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <style>
-        body {
-            background: #111;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .box {
-            background: #1c1c1c;
-            padding: 30px;
-            border-radius: 10px;
-            width: 300px;
-            text-align: center;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 5px;
-            border: none;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #00ff88;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Login</title>
+
+<style>
+body {
+    background: #0f0f0f;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+}
+.box {
+    background: #1e1e1e;
+    padding: 30px;
+    border-radius: 10px;
+    width: 320px;
+    text-align: center;
+}
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+}
+button {
+    width: 100%;
+    padding: 10px;
+    background: #00ff99;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+.error {
+    color: red;
+    display: none;
+}
+</style>
 </head>
+
 <body>
-    <div class="box">
-        <h2>Login</h2>
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Senha">
-        <button>Entrar</button>
-    </div>
+
+<div class="box">
+    <h2>Área de Login</h2>
+
+    <input type="text" id="user" placeholder="Usuário">
+    <input type="password" id="pass" placeholder="Senha">
+
+    <button onclick="login()">Entrar</button>
+    <p class="error" id="error">Usuário ou senha incorretos</p>
+</div>
+
+<script>
+function login() {
+    var user = document.getElementById("user").value;
+    var pass = document.getElementById("pass").value;
+
+    if (user === "admin" && pass === "1234") {
+        localStorage.setItem("logado", "sim");
+        window.location.href = "painel.html";
+    } else {
+        document.getElementById("error").style.display = "block";
+    }
+}
+</script>
+
 </body>
 </html>
